@@ -207,11 +207,11 @@ const GameBookingSection = () => {
         return slotDateTime < now
     }
 
-    // Check if user is logged in (mock)
-    const isUserLoggedIn = (): boolean => {
-        // Replace with actual auth check
-        return typeof window !== 'undefined' && !!localStorage.getItem('user')
-    }
+    // // Check if user is logged in (mock)
+    // const isUserLoggedIn = (): boolean => {
+    //     // Replace with actual auth check
+    //     return typeof window !== 'undefined' && !!localStorage.getItem('user')
+    // }
 
     // ============= EVENT HANDLERS =============
     const handlePreviousMonth = () => {
