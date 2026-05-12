@@ -44,9 +44,7 @@ export default function ReviewsSection() {
   }
 
   return (
-    <section id="reviews" className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent" />
-
+    <section id="reviews" className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -55,10 +53,10 @@ export default function ReviewsSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-200">
             What Our Drivers Say
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-300 text-lg">
             Join thousands of satisfied customers
           </p>
         </motion.div>
@@ -98,28 +96,13 @@ export default function ReviewsSection() {
           </motion.div>
 
           {/* Navigation Buttons */}
-          <div className="flex justify-between mt-6">
+          <div className="flex justify-end mt-6 gap-x-5">
             <button
               onClick={prevReview}
               className="p-3 rounded-lg bg-slate-800 hover:bg-slate-700 border border-cyan-500/30 hover:border-cyan-500 transition-all duration-300 group"
             >
               <ChevronLeft size={20} className="text-cyan-400 group-hover:text-cyan-300" />
             </button>
-
-            {/* Dots */}
-            <div className="flex gap-2">
-              {reviews.map((_, i) => (
-                <button
-                  key={i}
-                  onClick={() => setCurrentIndex(i)}
-                  className={`w-2 h-2 rounded-full transition-all duration-300 ${
-                    i === currentIndex
-                      ? 'bg-cyan-400 w-8'
-                      : 'bg-slate-600 hover:bg-slate-500'
-                  }`}
-                />
-              ))}
-            </div>
 
             <button
               onClick={nextReview}
@@ -144,7 +127,7 @@ export default function ReviewsSection() {
             { number: '98%', label: 'Satisfaction' },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-bold text-cyan-400 mb-2">
+              <div className="text-3xl md:text-4xl font-bold text-blue-400 mb-2">
                 {stat.number}
               </div>
               <p className="text-gray-400 text-sm">{stat.label}</p>

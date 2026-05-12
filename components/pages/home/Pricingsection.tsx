@@ -75,9 +75,7 @@ export default function PricingSection() {
   }
 
   return (
-    <section id="pricing" className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent" />
-
+    <section id="pricing" className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -86,10 +84,10 @@ export default function PricingSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Simple, Transparent Pricing
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-300 text-lg">
             Choose the perfect package for your driving experience
           </p>
         </motion.div>
@@ -108,7 +106,7 @@ export default function PricingSection() {
               className="relative group"
             >
               {/* Card */}
-              <div className={`relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 h-full flex flex-col border border-gray-200 bg-linear-to-br hover:shadow-lg`}>
+              <div className={`relative p-8 rounded-2xl backdrop-blur-sm transition-all duration-300 h-full flex flex-col border border-gray-700 bg-linear-to-br hover:shadow-lg`}>
                 {/* Popular Badge */}
                 {pkg.popular && (
                   <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-linear-to-r from-cyan-500 to-purple-500 text-white text-sm font-bold rounded-full">
@@ -118,25 +116,25 @@ export default function PricingSection() {
 
                 {/* Header */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold mb-2">{pkg.name}</h3>
-                  <p className="text-black">{pkg.duration}</p>
+                  <h3 className="text-2xl text-gray-200 font-bold mb-2">{pkg.name}</h3>
+                  <p className="text-gray-300">{pkg.duration}</p>
                 </div>
 
                 {/* Price */}
                 <div className="mb-6">
                   <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold text-blue-600">${pkg.price}</span>
+                    <span className="text-4xl font-bold text-blue-500">${pkg.price}</span>
                     <span className="text-orange-500 line-through">${pkg.originalPrice}</span>
                   </div>
-                  <p className="text-sm text-gray-800 mt-1">Save {Math.round((1 - pkg.price / pkg.originalPrice) * 100)}%</p>
+                  <p className="text-sm text-gray-300 mt-1">Save {Math.round((1 - pkg.price / pkg.originalPrice) * 100)}%</p>
                 </div>
 
                 {/* Features */}
                 <div className="space-y-3 mb-8 flex-1">
                   {pkg.features.map((feature, i) => (
                     <div key={i} className="flex items-center gap-3">
-                      <Check size={20} className="text-blue-600 shrink-0" />
-                      <span className="text-gray-800 text-sm">{feature}</span>
+                      <Check size={20} className="text-blue-500 shrink-0" />
+                      <span className="text-gray-300 text-sm">{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -146,7 +144,7 @@ export default function PricingSection() {
                   href="/auth/register"
                   className={`w-full py-3 rounded-lg font-bold transition-all duration-300 text-center ${
                     pkg.popular
-                      ? 'bg-linear-to-r from-cyan-500 to-purple-500 text-white'
+                      ? 'bg-linear-to-r from-red-500 to-transparent hover:from-transparent hover:to-red-500 text-white duration-1000 transition-transform'
                       : 'border border-cyan-400/50 text-cyan-400'
                   }`}
                 >
@@ -165,7 +163,7 @@ export default function PricingSection() {
           viewport={{ once: true }}
           className="mt-16 p-6 rounded-xl bg-linear-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20 text-center"
         >
-          <p className="text-gray-800">
+          <p className="text-gray-300">
             🎉 <span className="font-bold">Bundle Discount!</span> Book 3+ sessions and save an additional 15%
           </p>
         </motion.div>

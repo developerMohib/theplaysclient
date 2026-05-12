@@ -73,11 +73,9 @@ export default function HeroSection() {
         >
           <Link
             href="/auth/register"
-            className="group relative px-8 py-4 rounded-2xl bg-linear-to-r from-cyan-500 to-purple-600 text-white font-bold text-lg overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(34,211,238,0.5)]"
+            className="group relative px-8 py-4 rounded-2xl bg-linear-to-r from-red-600 to-transparent text-white font-bold text-lg overflow-hidden transition-all duration-300 hover:scale-105"
           >
             <span className="relative z-10">Book Your Ride</span>
-
-            <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
           </Link>
 
           <a

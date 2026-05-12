@@ -42,9 +42,7 @@ function CTASection() {
   }
  
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-r from-cyan-500/5 via-transparent to-purple-500/5" />
- 
+    <section className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-4xl mx-auto relative z-10 text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -65,7 +63,7 @@ function CTASection() {
             {user ? (
               <Link
                 href="/dashboard/user"
-                className="px-8 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 text-white font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300"
+                className="px-8 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 text-white font-semibold transition-all duration-300"
               >
                 Go to Dashboard
               </Link>
@@ -73,7 +71,7 @@ function CTASection() {
               <>
                 <Link
                   href="/auth/register"
-                  className="px-8 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 text-white font-semibold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300"
+                  className="px-8 py-3 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 text-white font-semibold transition-all duration-300"
                 >
                   Start Booking Now
                 </Link>

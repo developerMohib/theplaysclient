@@ -58,9 +58,7 @@ export default function ServicesSection() {
   }
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-purple-500/5 to-transparent" />
-
+    <section className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -69,10 +67,10 @@ export default function ServicesSection() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Our Premium Services
           </h2>
-          <p className="text-black text-lg">
+          <p className="text-gray-300 text-lg">
             Everything you need for an unforgettable driving experience
           </p>
         </motion.div>
@@ -90,19 +88,17 @@ export default function ServicesSection() {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="group relative border border-gray-300 rounded-xl bg-linear-to-br hover:shadow-lg transition-all duration-300 backdrop-blur-sm"
+                className="group relative border border-gray-700 rounded-xl bg-linear-to-br hover:shadow-lg transition-all duration-300 backdrop-blur-sm"
               >
-                <div className="absolute inset-0 rounded-xl blur opacity-0 group-hover:opacity-100 transition duration-300" />
-
                 <div className="relative p-8 rounded-xl group-hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
                   {/* Icon */}
-                  <div className="mb-6 w-14 h-14 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Icon size={28} className="text-orange-300" />
+                  <div className="mb-6 w-14 h-14 rounded-lg flex items-center justify-center group-hover:scale-120 transition-transform duration-300">
+                    <Icon size={28} className="text-orange-500" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
-                  <p className="leading-relaxed">{service.description}</p>
+                  <h3 className="text-xl text-gray-200 font-bold mb-3">{service.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{service.description}</p>
 
               
                 </div>

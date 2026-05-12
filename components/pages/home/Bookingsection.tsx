@@ -8,8 +8,8 @@ import { Calendar, Clock, Users } from 'lucide-react'
 export default function BookingSection() {
 //   const { user } = useAuth()
 const user = {
-    name: 'John Doe',   email: 'john.doe@example.com'
-} // Replace with actual user state from auth context
+    name: 'John Doe',   email: 'john.doe@example.com', role: 'user'
+}
   const [formData, setFormData] = useState({
     date: '',
     time: '',
@@ -35,8 +35,7 @@ const user = {
   }
 
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
-      <div className="absolute inset-0 bg-linear-to-b from-transparent via-cyan-500/5 to-transparent" />
+    <section className="py-20 px-4 relative overflow-hidden bg-black">
 
       <div className="max-w-2xl mx-auto relative z-10">
         <motion.div
@@ -46,10 +45,10 @@ const user = {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-200">
             Quick Booking
           </h2>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-300 text-lg">
             Get started with just a few clicks
           </p>
         </motion.div>
@@ -64,8 +63,8 @@ const user = {
         >
           {/* Date */}
           <div>
-            <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
-              <Calendar size={16} className="text-cyan-400" />
+            <label className="text-sm font-semibold mb-2 flex items-center gap-2 text-white">
+              <Calendar size={16} className="text-blue-400" />
               Select Date
             </label>
             <input
@@ -80,8 +79,8 @@ const user = {
 
           {/* Time */}
           <div>
-            <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
-              <Clock size={16} className="text-cyan-400" />
+            <label className="text-sm font-semibold mb-2 flex items-center gap-2 text-white">
+              <Clock size={16} className="text-blue-400" />
               Select Time
             </label>
             <select
@@ -105,8 +104,8 @@ const user = {
 
           {/* Duration */}
           <div>
-            <label className="block text-sm font-semibold mb-2 flex items-center gap-2">
-              <Users size={16} className="text-cyan-400" />
+            <label className="text-sm font-semibold mb-2 flex items-center gap-2 text-white">
+              <Users size={16} className="text-blue-400" />
               Duration
             </label>
             <select
@@ -155,7 +154,7 @@ const user = {
           {/* Button */}
           <button
             type="submit"
-            className="w-full py-3 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 text-white font-bold hover:shadow-lg hover:shadow-cyan-400/50 transition-all duration-300 transform hover:scale-105"
+            className="w-full py-3 rounded-lg bg-linear-to-r from-cyan-500 to-purple-500 text-white font-bold hover:shadow-lg transition-all duration-300 transform cursor-pointer"
           >
             {user ? 'Continue to Booking' : 'Create Account & Book'}
           </button>

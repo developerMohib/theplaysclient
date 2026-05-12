@@ -58,7 +58,7 @@ export default function HowItWorks() {
   }
 
   return (
-    <section id="how-it-works" className="py-20 px-4 relative overflow-hidden">
+    <section id="how-it-works" className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -67,10 +67,10 @@ export default function HowItWorks() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-gray-200">
             How Booking Works
           </h2>
-          <p className="text-slate-900 text-lg">
+          <p className="text-gray-200 text-lg">
             Simple, secure, and straightforward booking in 5 easy steps
           </p>
         </motion.div>
@@ -91,17 +91,17 @@ export default function HowItWorks() {
                 className="relative"
               >               
                 {/* Card */}
-                <div className="p-6 rounded-xl bg-linear-to-br hover:shadow-md border border-gray-200 transition-all duration-300 backdrop-blur-sm h-full relative group">
+                <div className="p-6 rounded-xl bg-linear-to-br hover:shadow-md border border-gray-700 transition-all duration-300 backdrop-blur-sm h-full relative group">
                   {/* Number Badge */}
                   
                   {/* Icon */}
                   <div className="mb-4">
-                    <Icon size={32} className="text-slate-600 group-hover:text-slate-800 group-hover:scale-110 transition-transform duration-300" />
+                    <Icon size={32} className="text-white group-hover:text-gray-300 group-hover:scale-110 transition-transform duration-300" />
                   </div>
 
                   {/* Content */}
-                  <h3 className="text-lg font-bold mb-2">{step.title}</h3>
-                  <p className="text-slate-700 text-sm">{step.description}</p>
+                  <h3 className="text-lg text-gray-200 font-bold mb-2">{step.title}</h3>
+                  <p className="text-gray-200 text-sm">{step.description}</p>
                 </div>
               </motion.div>
             )
@@ -119,8 +119,8 @@ export default function HowItWorks() {
           <div className="flex flex-col md:flex-row items-center gap-6">
             <Smartphone size={48} className="text-cyan-400" />
             <div>
-              <h3 className="text-xl font-bold mb-2">Get Mobile Notifications</h3>
-              <p className="text-slate-700">
+              <h3 className="text-xl text-gray-200 font-bold mb-2">Get Mobile Notifications</h3>
+              <p className="text-gray-200">
                 Receive real-time updates about your booking, reminders, and exclusive offers directly on your phone.
               </p>
             </div>

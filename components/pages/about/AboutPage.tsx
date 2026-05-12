@@ -1,10 +1,19 @@
 import React from 'react';
+import GamingHistory from './GamingHistory';
+import Facilities from './Facilities';
+import Abouthero from './Abouthero';
+import TeamSquad from './TeamSquad';
+import CallToAction from '@/components/common/CallToAction';
 
 const AboutPage = () => {
     return (
-        <div>
-            <h1>About Us</h1>
-        </div>
+       <>
+        <Abouthero />
+        <Facilities />
+        <GamingHistory />
+        <TeamSquad />
+        <CallToAction />
+       </>
     );
 };
 
