@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const Abouthero = () => {
   return (
-    <section className="relative py-20 px-4 overflow-hidden">
+    <section className="relative py-20 px-4 overflow-hidden bg-black">
       <div className="max-w-5xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

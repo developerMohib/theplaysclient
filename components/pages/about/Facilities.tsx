@@ -43,7 +43,7 @@ const facilities = [
 ]
 const Facilities = () => {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,7 +52,7 @@ const Facilities = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl text-white font-bold mb-4">
             World-Class Facilities
           </h2>
           <p className="text-gray-400 text-lg max-w-2xl mx-auto">
@@ -82,7 +82,7 @@ const Facilities = () => {
                 </div>
 
                 {/* Title */}
-                <h3 className="text-xl font-bold mb-2">{facility.title}</h3>
+                <h3 className="text-xl font-bold mb-2 text-white">{facility.title}</h3>
 
                 {/* Description */}
                 <p className="text-gray-400 mb-6">{facility.description}</p>
@@ -114,7 +114,7 @@ const Facilities = () => {
         >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h3 className="text-3xl font-bold mb-4">Facility Specifications</h3>
+              <h3 className="text-3xl font-bold mb-4 text-white">Facility Specifications</h3>
               <ul className="space-y-3">
                 {[
                   '8 Premium Racing Simulators with 4K displays',

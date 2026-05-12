@@ -43,7 +43,7 @@ const milestones = [
 ]
 const GamingHistory = () => {
   return (
-    <section className="py-20 px-4 relative overflow-hidden">
+    <section className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-6xl mx-auto relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -52,10 +52,10 @@ const GamingHistory = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
             Our Gaming History
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-gray-300 text-lg max-w-2xl mx-auto">
             15+ years of passionate gaming, innovation, and leadership in the simulation industry
           </p>
         </motion.div>
@@ -81,8 +81,8 @@ const GamingHistory = () => {
                     }`}>
                     <div className="text-3xl mb-3">{milestone.icon}</div>
                     <div className="text-cyan-400 font-bold text-lg mb-2">{milestone.year}</div>
-                    <h3 className="text-xl font-bold mb-2">{milestone.title}</h3>
-                    <p className="text-gray-400">{milestone.description}</p>
+                    <h3 className="text-xl font-bold mb-2 text-white">{milestone.title}</h3>
+                    <p className="text-gray-200">{milestone.description}</p>
                   </div>
                 </div>
 
@@ -106,7 +106,7 @@ const GamingHistory = () => {
           viewport={{ once: true }}
           className="mt-20 p-8 rounded-xl bg-linear-to-r from-cyan-500/10 to-purple-500/10 border border-cyan-500/20"
         >
-          <h3 className="text-2xl font-bold mb-6">Gaming Legacy</h3>
+          <h3 className="text-2xl text-white font-bold mb-6">Gaming Legacy</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               { title: '500+', subtitle: 'Gaming Sessions Monthly' },
@@ -187,8 +187,8 @@ const GamingHistory = () => {
                 <div className="flex items-start gap-4">
                   <div className="text-3xl shrink-0">{achievement.title.split(' ')[0]}</div>
                   <div className="flex-1">
-                    <h3 className="font-bold mb-2 text-lg">{achievement.title.substring(3)}</h3>
-                    <p className="text-gray-400 text-sm mb-3">{achievement.description}</p>
+                    <h3 className="font-bold mb-2 text-lg text-white">{achievement.title.substring(3)}</h3>
+                    <p className="text-gray-300 text-sm mb-3">{achievement.description}</p>
                     <span className="inline-block px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-400 text-xs font-semibold">
                       Since {achievement.year}
                     </span>
@@ -207,7 +207,7 @@ const GamingHistory = () => {
           viewport={{ once: true }}
           className="p-8 rounded-xl bg-linear-to-r from-yellow-500/10 to-orange-500/10 border border-yellow-500/20"
         >
-          <h3 className="text-2xl font-bold mb-6 text-center">What Makes Us #1</h3>
+          <h3 className="text-2xl font-bold mb-6 text-center text-white">What Makes Us #1</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
@@ -241,7 +241,7 @@ const GamingHistory = () => {
             ].map((category, i) => (
               <div key={i} className="p-6 rounded-lg bg-slate-800/50 border border-slate-700/50">
                 <div className="text-4xl mb-4">{category.icon}</div>
-                <h4 className="font-bold mb-4 text-lg">{category.title}</h4>
+                <h4 className="font-bold mb-4 text-lg text-white">{category.title}</h4>
                 <ul className="space-y-2">
                   {category.items.map((item, j) => (
                     <li key={j} className="flex items-center gap-2 text-gray-300 text-sm">

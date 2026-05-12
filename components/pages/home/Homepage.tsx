@@ -8,8 +8,8 @@ import HowItWorks from "./Howtowork";
 import PricingSection from "./Pricingsection";
 import ReviewsSection from "./ReviewSection";
 import ServicesSection from "./ServiceSection";
-import AdvancedBookingSection from './SlotBooking';
 import GameListSection from './GameListSection';
+import GameBookingSection from './SlotBookingTwo';
 
 const Homepage = () => {
   return (
@@ -21,7 +21,7 @@ const Homepage = () => {
       <GameListSection />
 
       {/* Advanced Booking Section */}
-      <AdvancedBookingSection />
+      <GameBookingSection />
 
       {/* How Booking Works */}
       <HowItWorks />

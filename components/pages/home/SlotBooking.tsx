@@ -327,174 +327,90 @@ const AdvancedBookingSection = () => {
                         </div>
                         <div className='grid-cols-1'>
                             <div className="mt-8 rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-900/40 to-cyan-900/20 p-8">
-                        <h2 className="mb-6 text-2xl font-bold text-blue-300">
-                            Available Time Slots
-                        </h2>
+                                <h2 className="mb-6 text-2xl font-bold text-blue-300">
+                                    Available Time Slots
+                                </h2>
 
-                        <div className="space-y-3">
-                            {timeSlots.map((slot) => {
-                                const available =
-                                    isSlotAvailable(slot)
+                                <div className="space-y-3">
+                                    {timeSlots.map((slot) => {
+                                        const available =
+                                            isSlotAvailable(slot)
 
-                                const isPast =
-                                    isTimeInPast(
-                                        selectedDate,
-                                        slot
-                                    )
-
-                                const isSelected =
-                                    selectedSlot?.id ===
-                                    slot.id
-
-                                return (
-                                    <button
-                                        key={slot.id}
-                                        disabled={
-                                            isPast ||
-                                            !available
-                                        }
-                                        onClick={() =>
-                                            setSelectedSlot(
+                                        const isPast =
+                                            isTimeInPast(
+                                                selectedDate,
                                                 slot
                                             )
-                                        }
-                                        className={`w-full rounded-lg border-2 p-4 text-left transition ${isSelected
-                                            ? 'border-cyan-400 bg-linear-to-br from-blue-600/60 to-cyan-600/60'
-                                            : 'border-gray-700/50 bg-gray-800/50'
-                                            }`}
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            <div>
-                                                <p className="font-bold text-blue-300">
-                                                    {
-                                                        slot.label
-                                                    }
-                                                </p>
 
-                                                <p className="mt-1 text-sm text-gray-400">
-                                                    {
-                                                        slot.totalStations -
-                                                        slot.bookedStations
-                                                    }{' '}
-                                                    seats available
-                                                </p>
-                                            </div>
+                                        const isSelected =
+                                            selectedSlot?.id ===
+                                            slot.id
 
-                                            <div className="flex gap-1">
-                                                {[
-                                                    ...Array(
-                                                        slot.totalStations
-                                                    ),
-                                                ].map(
-                                                    (_, i) => (
-                                                        <div
-                                                            key={
-                                                                i
-                                                            }
-                                                            className={`h-3 w-3 rounded-full ${i <
-                                                                slot.bookedStations
-                                                                ? 'bg-red-500'
-                                                                : 'bg-green-500'
-                                                                }`}
-                                                        />
+                                        return (
+                                            <button
+                                                key={slot.id}
+                                                disabled={
+                                                    isPast ||
+                                                    !available
+                                                }
+                                                onClick={() =>
+                                                    setSelectedSlot(
+                                                        slot
                                                     )
-                                                )}
-                                            </div>
-                                        </div>
-                                    </button>
-                                )
-                            })}
-                        </div>
-                    </div>
+                                                }
+                                                className={`w-full rounded-lg border-2 p-4 text-left transition ${isSelected
+                                                    ? 'border-cyan-400 bg-linear-to-br from-blue-600/60 to-cyan-600/60'
+                                                    : 'border-gray-700/50 bg-gray-800/50'
+                                                    }`}
+                                            >
+                                                <div className="flex items-center justify-between">
+                                                    <div>
+                                                        <p className="font-bold text-blue-300">
+                                                            {
+                                                                slot.label
+                                                            }
+                                                        </p>
+
+                                                        <p className="mt-1 text-sm text-gray-400">
+                                                            {
+                                                                slot.totalStations -
+                                                                slot.bookedStations
+                                                            }{' '}
+                                                            seats available
+                                                        </p>
+                                                    </div>
+
+                                                    <div className="flex gap-1">
+                                                        {[
+                                                            ...Array(
+                                                                slot.totalStations
+                                                            ),
+                                                        ].map(
+                                                            (_, i) => (
+                                                                <div
+                                                                    key={
+                                                                        i
+                                                                    }
+                                                                    className={`h-3 w-3 rounded-full ${i <
+                                                                        slot.bookedStations
+                                                                        ? 'bg-red-500'
+                                                                        : 'bg-green-500'
+                                                                        }`}
+                                                                />
+                                                            )
+                                                        )}
+                                                    </div>
+                                                </div>
+                                            </button>
+                                        )
+                                    })}
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
 
-                {/* TIME SLOTS */}
-
-                {selectedDate && (
-                    <div className="mt-8 rounded-xl border border-blue-500/30 bg-linear-to-br from-blue-900/40 to-cyan-900/20 p-8">
-                        <h2 className="mb-6 text-2xl font-bold text-blue-300">
-                            Available Time Slots
-                        </h2>
-
-                        <div className="space-y-3">
-                            {timeSlots.map((slot) => {
-                                const available =
-                                    isSlotAvailable(slot)
-
-                                const isPast =
-                                    isTimeInPast(
-                                        selectedDate,
-                                        slot
-                                    )
-
-                                const isSelected =
-                                    selectedSlot?.id ===
-                                    slot.id
-
-                                return (
-                                    <button
-                                        key={slot.id}
-                                        disabled={
-                                            isPast ||
-                                            !available
-                                        }
-                                        onClick={() =>
-                                            setSelectedSlot(
-                                                slot
-                                            )
-                                        }
-                                        className={`w-full rounded-lg border-2 p-4 text-left transition ${isSelected
-                                            ? 'border-cyan-400 bg-linear-to-br from-blue-600/60 to-cyan-600/60'
-                                            : 'border-gray-700/50 bg-gray-800/50'
-                                            }`}
-                                    >
-                                        <div className="flex items-center justify-between">
-                                            <div>
-                                                <p className="font-bold text-blue-300">
-                                                    {
-                                                        slot.label
-                                                    }
-                                                </p>
-
-                                                <p className="mt-1 text-sm text-gray-400">
-                                                    {
-                                                        slot.totalStations -
-                                                        slot.bookedStations
-                                                    }{' '}
-                                                    seats available
-                                                </p>
-                                            </div>
-
-                                            <div className="flex gap-1">
-                                                {[
-                                                    ...Array(
-                                                        slot.totalStations
-                                                    ),
-                                                ].map(
-                                                    (_, i) => (
-                                                        <div
-                                                            key={
-                                                                i
-                                                            }
-                                                            className={`h-3 w-3 rounded-full ${i <
-                                                                slot.bookedStations
-                                                                ? 'bg-red-500'
-                                                                : 'bg-green-500'
-                                                                }`}
-                                                        />
-                                                    )
-                                                )}
-                                            </div>
-                                        </div>
-                                    </button>
-                                )
-                            })}
-                        </div>
-                    </div>
-                )}
 
                 {/* CONFIRMATION */}
 
