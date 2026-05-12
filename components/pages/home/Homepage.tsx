@@ -8,39 +8,47 @@ import HowItWorks from "./Howtowork";
 import PricingSection from "./Pricingsection";
 import ReviewsSection from "./ReviewSection";
 import ServicesSection from "./ServiceSection";
+import AdvancedBookingSection from './SlotBooking';
+import GameListSection from './GameListSection';
 
 const Homepage = () => {
-    return (
-      <div>
+  return (
+    <div>
       {/* Hero Section */}
       <HeroSection />
- 
+
+      {/* Game List Section */}
+      <GameListSection />
+
+      {/* Advanced Booking Section */}
+      <AdvancedBookingSection />
+
       {/* How Booking Works */}
       <HowItWorks />
- 
+
       {/* Services Section */}
       <ServicesSection />
- 
+
       {/* Pricing Section */}
       <PricingSection />
- 
+
       {/* Reviews Section */}
       <ReviewsSection />
- 
+
       {/* Booking Section */}
       <BookingSection />
- 
+
       {/* CTA Section */}
       <CTASection />
     </div>
   )
 };
 function CTASection() {
-  const user= {
+  const user = {
     name: 'John Doe',
     email: 'john.doe@example.com'
   }
- 
+
   return (
     <section className="py-20 px-4 relative overflow-hidden bg-black">
       <div className="max-w-4xl mx-auto relative z-10 text-center">
@@ -58,7 +66,7 @@ function CTASection() {
           <p className="text-gray-400 text-lg mb-8">
             Join thousands of drivers whove experienced the ultimate driving simulator
           </p>
- 
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             {user ? (
               <Link

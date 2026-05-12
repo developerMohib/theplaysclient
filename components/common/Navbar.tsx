@@ -13,9 +13,9 @@ type NavItem = {
 
 const navItems: NavItem[] = [
     { label: 'Home', href: '/' },
-    { label: 'About', href: '/about' },
+    { label: 'Games', href: '/games' },
     { label: 'Pricing', href: '/pricing' },
-    { label: 'Reviews', href: '/#reviews' },
+    { label: 'About', href: '/about' },
     { label: 'Contact', href: '/contact' },
 ]
 
@@ -53,7 +53,7 @@ export default function Navbar() {
 
     return (
         <nav className="sticky top-0 left-0 z-50 w-full shadow-[0_4px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl bg-black/75">
-            <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
                 <Logo />
 
                 <DesktopNav />
