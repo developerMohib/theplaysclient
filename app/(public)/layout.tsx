@@ -1,6 +1,8 @@
 
 import Footer from '@/components/common/Footer';
 import Navbar from '@/components/common/Navbar';
+import ScrollToTopButton from '@/components/common/ScrollToTop';
+import WhatsAppButton from '@/components/common/WhatsAppButton';
 import React from 'react';
 
 const layoutPublic = async ({ children }: { children: React.ReactNode }) => {
@@ -12,6 +14,8 @@ const layoutPublic = async ({ children }: { children: React.ReactNode }) => {
             <main className="container mx-auto">
                 {children}
             </main>
+            <WhatsAppButton />
+            <ScrollToTopButton />
             <Footer />
         </>
     );

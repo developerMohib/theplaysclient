@@ -1,10 +1,10 @@
-import UserDashboard from '@/components/dashboard/user/UserDashboard';
+import Userlist from '@/components/dashboard/admin/Userlist';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <UserDashboard />
+            <Userlist />
         </div>
     );
 };

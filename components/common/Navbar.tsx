@@ -23,7 +23,7 @@ const user = {
     name: 'John Doe',
     email: 'john.doe@example.com',
     image: 'https://loremflickr.com/g/200/200/girl',
-    role: 'user',
+    role: 'admin',
 }
 
 export default function Navbar() {

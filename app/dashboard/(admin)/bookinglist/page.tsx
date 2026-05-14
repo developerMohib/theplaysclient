@@ -1,10 +1,10 @@
-import UserDashboard from '@/components/dashboard/user/UserDashboard';
+import BookingList from '@/components/dashboard/admin/BookingList';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <UserDashboard />
+            <BookingList />
         </div>
     );
 };

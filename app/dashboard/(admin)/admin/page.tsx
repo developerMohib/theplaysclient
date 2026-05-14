@@ -1,10 +1,10 @@
-import UserDashboard from '@/components/dashboard/user/UserDashboard';
+import AdminDashboard from '@/components/dashboard/admin/AdminDashboard';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <UserDashboard />
+            <AdminDashboard />
         </div>
     );
 };

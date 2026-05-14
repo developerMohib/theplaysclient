@@ -1,17 +1,18 @@
-import Footer from "@/components/common/Footer";
-import Navbar from "@/components/common/Navbar";
+
+import AdminSidebar from "@/components/dashboard/admin/AdminSidebar";
 
 const layoutPublic = async ({ children }: { children: React.ReactNode }) => {
 
 
     return (
-        <>
-            <Navbar />
-            <main className="container mx-auto">
+        <div className="min-h-screen  bg-slate-950 text-white">
+              {/* Sidebar */}
+              <AdminSidebar />
+              {/* Main Content */}
+              <main className="flex-1 p-6 ml-64">
                 {children}
-            </main>
-            <Footer />
-        </>
+              </main>
+            </div>
     );
 };
 
