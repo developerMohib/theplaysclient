@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "The Plays | Premium Racing Wheel Rental & Gaming",
   description: "Online Car Racing Game Booking System - Rent premium racing wheels and gaming setups for an immersive driving experience. Book now for thrilling virtual races!",
-   icons: {
+  icons: {
     icon: '/logo-the-plays.png',
     apple: '/logo-the-plays.png',
   },

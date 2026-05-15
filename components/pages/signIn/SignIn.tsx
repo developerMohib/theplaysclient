@@ -55,7 +55,7 @@ const SignIn = () => {
     }
 
     return (
-        <section className="flex min-h-screen items-center justify-center bg-black px-4 py-10 text-white">
+        <section className="flex items-center justify-center bg-black px-4 py-10 text-white">
             <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
                 {/* HEADER */}
 
@@ -128,11 +128,7 @@ const SignIn = () => {
 
                             <button
                                 type="button"
-                                onClick={() =>
-                                    setShowPassword(
-                                        !showPassword
-                                    )
-                                }
+                                onClick={() => setShowPassword(!showPassword)}
                                 className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400"
                             >
                                 {showPassword ? (

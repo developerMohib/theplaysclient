@@ -9,15 +9,16 @@ const layoutPublic = async ({ children }: { children: React.ReactNode }) => {
 
 
     return (
-        <>
+        <section className='bg-black'>
             <Navbar />
             <main className="container mx-auto">
                 {children}
             </main>
             <WhatsAppButton />
             <ScrollToTopButton />
+
             <Footer />
-        </>
+        </section>
     );
 };
 

@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, LayoutDashboard, LogOut } from 'lucide-react'
 
@@ -11,7 +11,15 @@ type NavItem = {
     href: string
 }
 
-const navItems: NavItem[] = [
+type User = {
+    name: string
+    email: string
+    image: string
+    role: string
+}
+
+// Navigation items for all users (public)
+const publicNavItems: NavItem[] = [
     { label: 'Home', href: '/' },
     { label: 'Games', href: '/games' },
     { label: 'Pricing', href: '/pricing' },
@@ -19,47 +27,68 @@ const navItems: NavItem[] = [
     { label: 'Contact', href: '/contact' },
 ]
 
-const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    image: 'https://loremflickr.com/g/200/200/girl',
-    role: 'admin',
-}
+// Navigation items for logged-in users
+const privateNavItems: NavItem[] = [
+    { label: 'Dashboard', href: '/dashboard' },
+    { label: 'My Games', href: '/my-games' },
+    { label: 'Profile', href: '/profile' },
+    { label: 'Settings', href: '/settings' },
+]
+
+// Mock user state - replace with your actual auth logic
+const user: User | null = null // Change to object to test logged-in state
+// const user: User | null = {
+//     name: 'John Doe',
+//     email: 'john.doe@example.com',
+//     image: 'https://loremflickr.com/g/200/200/girl',
+//     role: 'admin',
+// }
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
 
+    const logout = () => {
+        console.log('Logging out...')
+        // Add your logout logic here
+    }
+
     const closeMobileMenu = () => {
         setIsMenuOpen(false)
-        document.body.style.overflow = 'auto'
     }
 
     const toggleMobileMenu = () => {
-        const next = !isMenuOpen
-
-        setIsMenuOpen(next)
-        document.body.style.overflow = next ? 'hidden' : 'auto'
+        setIsMenuOpen((prev) => !prev)
     }
 
-    const logout = () => {
-        console.log('Logging out...')
-    }
-
-    useEffect(() => {
-        return () => {
-            document.body.style.overflow = 'auto'
-        }
-    }, [])
+    // Determine which nav items to show based on user login state
+    const navItems = user ? privateNavItems : publicNavItems
 
     return (
         <nav className="sticky top-0 left-0 z-50 w-full shadow-[0_4px_32px_rgba(0,0,0,0.35)] backdrop-blur-xl bg-black/75">
-            <div className="mx-auto flex h-16 items-center justify-between px-4 sm:px-6 lg:px-8">
+            <div className="mx-auto flex h-16 items-center justify-between px-4 container">
                 <Logo />
 
-                <DesktopNav />
+                <DesktopNav navItems={navItems} />
 
                 <div className="hidden items-center gap-4 md:flex">
-                    <UserDropdown logout={logout} />
+                    {user ? (
+                        <UserDropdown user={user} logout={logout} />
+                    ) : (
+                        <div className="flex gap-3">
+                            <Link
+                                href="/signin"
+                                className="rounded-full border px-5 py-2 text-sm font-medium text-white transition-all duration-300 hover:scale-105"
+                            >
+                                Sign In
+                            </Link>
+                            <Link
+                                href="/register"
+                                className="rounded-full border border-cyan-500/50 px-5 py-2 text-sm font-medium text-cyan-400 transition-all duration-300 hover:bg-cyan-500/10 hover:scale-105"
+                            >
+                                Sign Up
+                            </Link>
+                        </div>
+                    )}
                 </div>
 
                 <MobileMenuButton
@@ -71,16 +100,15 @@ export default function Navbar() {
             <MobileDrawer
                 isOpen={isMenuOpen}
                 closeMenu={closeMobileMenu}
+                user={user}
                 logout={logout}
+                navItems={navItems}
             />
         </nav>
     )
 }
 
-/* -------------------------------------------------------------------------- */
-/*                                   LOGO                                     */
-/* -------------------------------------------------------------------------- */
-
+// Logo Component - can be used in both desktop and mobile navbars
 export function Logo() {
     return (
         <Link href="/" className="group z-60 flex items-center gap-2">
@@ -100,11 +128,8 @@ export function Logo() {
     )
 }
 
-/* -------------------------------------------------------------------------- */
-/*                              DESKTOP NAVBAR                                */
-/* -------------------------------------------------------------------------- */
-
-function DesktopNav() {
+// Desktop Navigation Links - visible on larger screens
+function DesktopNav({ navItems }: { navItems: NavItem[] }) {
     return (
         <div className="hidden items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 shadow-[0_4px_12px_rgba(0,0,0,0.15)] backdrop-blur-xl lg:flex lg:px-7">
             {navItems.map((item) => (
@@ -122,11 +147,8 @@ function DesktopNav() {
     )
 }
 
-/* -------------------------------------------------------------------------- */
-/*                              USER DROPDOWN                                 */
-/* -------------------------------------------------------------------------- */
-
-function UserDropdown({ logout }: { logout: () => void }) {
+// User Dropdown Menu - visible when user is logged in
+function UserDropdown({ user, logout }: { user: User; logout: () => void }) {
     const [open, setOpen] = useState(false)
 
     return (
@@ -193,6 +215,7 @@ function UserDropdown({ logout }: { logout: () => void }) {
     )
 }
 
+// Dropdown item component used in the user dropdown menu
 function DropdownItem({
     href,
     icon,
@@ -213,10 +236,7 @@ function DropdownItem({
     )
 }
 
-/* -------------------------------------------------------------------------- */
-/*                            MOBILE MENU BUTTON                              */
-/* -------------------------------------------------------------------------- */
-
+// Mobile Menu Button - visible on smaller screens
 function MobileMenuButton({
     isOpen,
     onClick,
@@ -249,18 +269,19 @@ function MobileMenuButton({
     )
 }
 
-/* -------------------------------------------------------------------------- */
-/*                               MOBILE DRAWER                                */
-/* -------------------------------------------------------------------------- */
-
+// Mobile Drawer Menu - slides in from the right on smaller screens
 function MobileDrawer({
     isOpen,
     closeMenu,
+    user,
     logout,
+    navItems,
 }: {
     isOpen: boolean
     closeMenu: () => void
+    user: User | null
     logout: () => void
+    navItems: NavItem[]
 }) {
     return (
         <AnimatePresence>
@@ -313,48 +334,72 @@ function MobileDrawer({
                             ))}
 
                             <div className="mt-4 border-t border-white/10 pt-5">
-                                <div className="mb-5 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
-                                    <div className="h-12 w-12 overflow-hidden rounded-full">
-                                        <Image
-                                            width={48}
-                                            height={48}
-                                            src={user.image}
-                                            alt={user.name}
-                                            className="h-full w-full object-cover"
-                                        />
+                                {user ? (
+                                    // Logged-in user view
+                                    <>
+                                        <div className="mb-5 flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4">
+                                            <div className="h-12 w-12 overflow-hidden rounded-full">
+                                                <Image
+                                                    width={48}
+                                                    height={48}
+                                                    src={user.image}
+                                                    alt={user.name}
+                                                    className="h-full w-full object-cover"
+                                                />
+                                            </div>
+
+                                            <div>
+                                                <h4 className="font-medium text-white">
+                                                    {user.name}
+                                                </h4>
+
+                                                <p className="text-sm text-gray-400">
+                                                    {user.email}
+                                                </p>
+                                            </div>
+                                        </div>
+
+                                        <div className="space-y-3">
+                                            <Link
+                                                href={`/dashboard/${user.role}`}
+                                                onClick={closeMenu}
+                                                className="block rounded-2xl bg-cyan-500/10 px-5 py-4 text-center font-medium text-cyan-400"
+                                            >
+                                                Dashboard
+                                            </Link>
+
+                                            <button
+                                                onClick={() => {
+                                                    logout()
+                                                    closeMenu()
+                                                }}
+                                                className="flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-red-500 to-red-600 px-5 py-4 font-medium text-white"
+                                            >
+                                                <LogOut size={18} />
+                                                Logout
+                                            </button>
+                                        </div>
+                                    </>
+                                ) : (
+                                    // Guest user view
+                                    <div className="space-y-3">
+                                        <Link
+                                            href="/signin"
+                                            onClick={closeMenu}
+                                            className="block rounded-2xl border border-cyan-500/50 px-5 py-4 text-center font-medium text-cyan-400 transition-all duration-300 hover:bg-cyan-500/10 hover:scale-[1.02]"
+                                        >
+                                            Sign In
+                                        </Link>
+                                        
+                                        <Link
+                                            href="/register"
+                                            onClick={closeMenu}
+                                            className="block rounded-2xl border border-cyan-500/50 px-5 py-4 text-center font-medium text-cyan-400 transition-all duration-300 hover:bg-cyan-500/10 hover:scale-[1.02]"
+                                        >
+                                            Sign Up
+                                        </Link>
                                     </div>
-
-                                    <div>
-                                        <h4 className="font-medium text-white">
-                                            {user.name}
-                                        </h4>
-
-                                        <p className="text-sm text-gray-400">
-                                            {user.email}
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <div className="space-y-3">
-                                    <Link
-                                      href={`/dashboard/${user.role}`}
-                                        onClick={closeMenu}
-                                        className="block rounded-2xl bg-cyan-500/10 px-5 py-4 text-center font-medium text-cyan-400 transition-all duration-300 hover:bg-cyan-500/20"
-                                    >
-                                        Dashboard
-                                    </Link>
-
-                                    <button
-                                        onClick={() => {
-                                            logout()
-                                            closeMenu()
-                                        }}
-                                        className="flex w-full items-center justify-center gap-2 rounded-2xl bg-linear-to-r from-cyan-500 to-purple-500 px-5 py-4 font-medium text-white transition-all duration-300 hover:scale-[1.02] hover:shadow-lg hover:shadow-cyan-400/20"
-                                    >
-                                        <LogOut size={18} />
-                                        Logout
-                                    </button>
-                                </div>
+                                )}
                             </div>
                         </div>
                     </motion.div>

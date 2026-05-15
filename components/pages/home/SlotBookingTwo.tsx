@@ -304,7 +304,7 @@ const GameBookingSection = () => {
 
     return (
         <div className="min-h-screen bg-black py-12 px-4">
-            <div className="mx-auto max-w-7xl">
+            <div className="container mx-auto">
                 {/* HEADER */}
                 <div className="mb-12 text-center">
                     <h1 className="mb-4 text-5xl font-bold text-white">

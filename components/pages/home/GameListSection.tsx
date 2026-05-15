@@ -4,12 +4,12 @@ import Link from "next/link"
 
 export default function GameListSection() {
     return (
-        <section className="relative py-24 overflow-hidden bg-slate-950">
+        <section className="relative py-24 overflow-hidden container mx-auto">
             {/* Background Glow */}
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4">
+            <div className="relative z-10 mx-auto px-4">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <span className="inline-block px-4 py-2 rounded-full border border-cyan-400/20 bg-cyan-500/10 text-cyan-300 text-sm font-semibold mb-5">

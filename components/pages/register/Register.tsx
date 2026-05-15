@@ -4,19 +4,19 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Eye, EyeOff, Gamepad2 } from 'lucide-react'
+import { axiosInstance } from '@/hooks/axiosInstance'
 
 const RegisterPage = () => {
     const router = useRouter()
 
-    const [showPassword, setShowPassword] =
-        useState(false)
+    const [showPassword, setShowPassword] = useState(false)
 
-    const [loading, setLoading] =
-        useState(false)
+    const [loading, setLoading] = useState(false)
 
     const [formData, setFormData] = useState({
         name: '',
         email: '',
+        phone: '',
         password: '',
     })
 
@@ -28,7 +28,7 @@ const RegisterPage = () => {
             [e.target.name]: e.target.value,
         })
     }
-
+    
     const handleSubmit = async (
         e: React.FormEvent<HTMLFormElement>
     ) => {
@@ -37,13 +37,11 @@ const RegisterPage = () => {
         try {
             setLoading(true)
 
-            /**
-             * API CALL HERE
-             */
+            const response = await axiosInstance.post('/auth/register', formData)
+            console.log(response.data)
 
-            console.log(formData)
 
-            router.push('/login')
+            // router.push('/signin')
         } catch (error) {
             console.error(error)
         } finally {
@@ -52,7 +50,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <section className="flex min-h-screen items-center justify-center bg-black px-4 py-10 text-white">
+        <section className="flex items-center justify-center bg-black px-4 py-10 text-white">
             <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 backdrop-blur-xl">
                 {/* HEADER */}
 
@@ -110,6 +108,22 @@ const RegisterPage = () => {
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Enter your email"
+                            required
+                            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-cyan-400"
+                        />
+                    </div>
+
+                    <div>
+                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                            Your Phone Number
+                        </label>
+                        
+                        <input
+                            type="phone"
+                            name="phone"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            placeholder="Enter your phone"
                             required
                             className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-cyan-400"
                         />
@@ -177,10 +191,10 @@ const RegisterPage = () => {
                 <p className="mt-6 text-center text-sm text-gray-400">
                     Already have an account?{' '}
                     <Link
-                        href="/login"
+                        href="/signin"
                         className="font-semibold text-cyan-400 hover:underline"
                     >
-                        Login
+                        Sign In
                     </Link>
                 </p>
             </div>
