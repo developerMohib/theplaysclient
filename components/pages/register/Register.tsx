@@ -4,7 +4,9 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Eye, EyeOff, Gamepad2 } from 'lucide-react'
-import { axiosInstance } from '@/hooks/axiosInstance'
+import { axiosInstance } from '@/src/hooks/axiosInstance'
+import { toast } from 'sonner'
+import { getErrorMessage } from '@/components/utils/configAxios'
 
 const RegisterPage = () => {
     const router = useRouter()
@@ -16,7 +18,6 @@ const RegisterPage = () => {
     const [formData, setFormData] = useState({
         name: '',
         email: '',
-        phone: '',
         password: '',
     })
 
@@ -28,22 +29,20 @@ const RegisterPage = () => {
             [e.target.name]: e.target.value,
         })
     }
-    
-    const handleSubmit = async (
-        e: React.FormEvent<HTMLFormElement>
-    ) => {
-        e.preventDefault()
 
+    const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
         try {
             setLoading(true)
+            const response = await axiosInstance.post('/auth/register', formData);
+            if (response.data.success) {
+                toast.success(response.data.message)
+            }
 
-            const response = await axiosInstance.post('/auth/register', formData)
-            console.log(response.data)
-
-
-            // router.push('/signin')
+            router.push(`/dashboard/${response.data.user.role}`);
         } catch (error) {
-            console.error(error)
+            const message = getErrorMessage(error);
+            toast.error(message)
         } finally {
             setLoading(false)
         }
@@ -80,13 +79,15 @@ const RegisterPage = () => {
                     {/* NAME */}
 
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                        <label htmlFor="name" className="mb-2 block text-sm font-medium text-gray-300">
                             Full Name
                         </label>
 
                         <input
                             type="text"
                             name="name"
+                            id="name"
+                            autoComplete='name'
                             value={formData.name}
                             onChange={handleChange}
                             placeholder="Enter your full name"
@@ -98,13 +99,15 @@ const RegisterPage = () => {
                     {/* EMAIL */}
 
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                        <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-300">
                             Email Address
                         </label>
 
                         <input
                             type="email"
                             name="email"
+                            id="email"
+                            autoComplete='email'
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Enter your email"
@@ -113,26 +116,10 @@ const RegisterPage = () => {
                         />
                     </div>
 
-                    <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-300">
-                            Your Phone Number
-                        </label>
-                        
-                        <input
-                            type="phone"
-                            name="phone"
-                            value={formData.phone}
-                            onChange={handleChange}
-                            placeholder="Enter your phone"
-                            required
-                            className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 outline-none transition focus:border-cyan-400"
-                        />
-                    </div>
-
                     {/* PASSWORD */}
 
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                        <label htmlFor="password" className="mb-2 block text-sm font-medium text-gray-300">
                             Password
                         </label>
 
@@ -144,6 +131,8 @@ const RegisterPage = () => {
                                         : 'password'
                                 }
                                 name="password"
+                                id="password"
+                                autoComplete='password'
                                 value={
                                     formData.password
                                 }

@@ -5,12 +5,13 @@ import { usePathname } from 'next/navigation'
 import {
   LayoutDashboard,
   Calendar,
+  User,
 } from 'lucide-react'
 
 const menu = [
   { name: 'Overview', path: '/dashboard/user', icon: LayoutDashboard },
   { name: 'Bookings', path: '/dashboard/mybookings', icon: Calendar },
-  
+  { name: 'Profile', path: '/dashboard/profile', icon: User },
 ]
 
 export default function Usersidebar() {
@@ -19,7 +20,7 @@ export default function Usersidebar() {
   return (
     <aside className="w-64 fixed left-0 top-0 h-full bg-slate-900 border-r border-slate-800 p-4">
       <h1 className="text-xl font-bold mb-6 text-cyan-400">
-        Admin Panel
+        User Panel
       </h1>
 
       <nav className="space-y-2">

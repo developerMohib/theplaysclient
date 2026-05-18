@@ -1,13 +1,13 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
 import { useState } from 'react'
 import { Eye, EyeOff, Gamepad2 } from 'lucide-react'
+import { axiosInstance } from '@/src/hooks/axiosInstance'
+import { toast } from 'sonner'
+import { getErrorMessage } from '@/components/utils/configAxios'
 
 const SignIn = () => {
-    const router = useRouter()
-
     const [showPassword, setShowPassword] =
         useState(false)
 
@@ -35,20 +35,21 @@ const SignIn = () => {
 
         try {
             setLoading(true)
-
-            /**
-             * API CALL HERE
-             */
-
-            console.log(formData)
+            const response = await axiosInstance.post('/auth/login', formData)
+            console.log(78, 'Login response: ', response.data)
+            if (response.data.success) {
+                toast.success(response.data.message)
+            }
 
             /**
              * SAVE TOKEN
              */
 
-            router.push('/booking')
+            // router.push('/booking')
         } catch (error) {
-            console.error(error)
+            const message = getErrorMessage(error);
+            toast.error(message)
+
         } finally {
             setLoading(false)
         }
@@ -85,13 +86,14 @@ const SignIn = () => {
                     {/* EMAIL */}
 
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                        <label htmlFor="email" className="mb-2 block text-sm font-medium text-gray-300">
                             Email Address
                         </label>
 
                         <input
                             type="email"
                             name="email"
+                            id="email"
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Enter your email"
@@ -103,7 +105,7 @@ const SignIn = () => {
                     {/* PASSWORD */}
 
                     <div>
-                        <label className="mb-2 block text-sm font-medium text-gray-300">
+                        <label htmlFor="password" className="mb-2 block text-sm font-medium text-gray-300">
                             Password
                         </label>
 
@@ -115,6 +117,7 @@ const SignIn = () => {
                                         : 'password'
                                 }
                                 name="password"
+                                id="password"
                                 value={
                                     formData.password
                                 }

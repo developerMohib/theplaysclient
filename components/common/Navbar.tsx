@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDown, LayoutDashboard, LogOut } from 'lucide-react'
+import { useMe } from '@/src/hooks/useMe'
 
 type NavItem = {
     label: string
@@ -46,6 +47,8 @@ const user: User | null = null // Change to object to test logged-in state
 
 export default function Navbar() {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
+const { data } = useMe();
+console.log(17, 'User data from useMe hook: ', data)
 
     const logout = () => {
         console.log('Logging out...')

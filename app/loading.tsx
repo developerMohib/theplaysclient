@@ -1,9 +1,10 @@
+import Loader from '@/components/common/LoadingInit';
 import React from 'react';
 
 const loading = () => {
     return (
         <div>
-            <p>Loading...</p>
+            <Loader variant="wave" />
         </div>
     );
 };
