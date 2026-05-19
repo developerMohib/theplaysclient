@@ -1,4 +1,4 @@
-import RegisterPage from '@/components/pages/register/Register';
+import RegisterPage from '@/src/publicPages/register/Register';
 
 const page = () => {
     return (
