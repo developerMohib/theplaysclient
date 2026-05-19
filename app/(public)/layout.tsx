@@ -4,8 +4,6 @@ import React from 'react';
 import { Slide, ToastContainer } from 'react-toastify';
 
 const layoutPublic = async ({ children }: { children: React.ReactNode }) => {
-
-
     return (
         <section className="container mx-auto px-4">
             <Navbar />

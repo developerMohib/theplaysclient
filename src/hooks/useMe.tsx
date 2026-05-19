@@ -25,12 +25,11 @@ export const useMe = () => {
     queryFn: getMe,
     retry: false,
     staleTime: 5 * 60 * 1000,
+    enabled: true,
   })
 
   return { data, isFetching, isLoading, refetch }
 }
-
-
 // Log out function
 
 export const logoutUser = async () => {
@@ -44,7 +43,7 @@ export const logoutUser = async () => {
 
 export const useLogout = () => {
   const router = useRouter()
-const queryClient = useQueryClient();
+  const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: logoutUser,
@@ -52,15 +51,8 @@ const queryClient = useQueryClient();
       if (data.success) {
         toast.success(data.message)
       }
-      setTimeout(() => {
-        router.push("/")
-      }, 800)
-
-       queryClient.clear();
-
-      // OR better: only remove auth data
+      queryClient.clear();
       queryClient.removeQueries({ queryKey: ["user"] });
-
       router.push("/");
     },
     onError: (err) => {

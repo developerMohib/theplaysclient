@@ -30,12 +30,9 @@ const SignIn = () => {
 
         try {
             setLoading(true)
-
             const response = await axiosInstance.post('/auth/login', formData)
-
             if (response.data.success) {
                 toast.success(response.data.message)
-
                 // redirect after login
                 router.push(redirect || '/dashboard')
             }
