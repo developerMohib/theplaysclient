@@ -1,10 +1,10 @@
-import Gamepage from '@/src/publicPages/game/Gamepage';
+import Booknow from '@/src/publicPages/bookNow/Booknow';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <Gamepage />
+           <Booknow />
         </div>
     );
 };

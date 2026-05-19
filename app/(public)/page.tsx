@@ -1,8 +1,9 @@
-import Homepage from "@/components/pages/home/Homepage";
+import Homepage from "@/src/publicPages/home/Homepage";
 
 export default function Home() {
   return (
-    <Homepage />
-  )
+    <div>
+      <Homepage />
+    </div>
+  );
 }
- 

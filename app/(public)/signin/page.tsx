@@ -1,9 +1,10 @@
+import SignIn from '@/src/publicPages/signin/SignIn';
+import React from 'react';
 
-import SignIn from '@/components/pages/signIn/SignIn';
 const page = () => {
     return (
         <div>
-            <SignIn />
+           <SignIn />
         </div>
     );
 };

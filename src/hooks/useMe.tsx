@@ -1,60 +1,71 @@
-import { ApiResponse, ErrorResponse, User } from '@/src/interface/userInterface';
-import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
-import { AxiosError } from 'axios';
-import { axiosInstance } from './axiosInstance';
+"use client";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { axiosInstance } from "./axiosInstance";
+import { ApiResponse, ErrorResponse, IUser } from "../utilitis/all.types";
+import { AxiosError } from "axios";
+import { useRouter } from "next/navigation";
+import { toast } from 'react-toastify';
 
 
 export const userQueryKeys = {
-  all: ['user'] as const,
-  me: () => [...userQueryKeys.all, 'me'] as const,
-  detail: (id: string) => [...userQueryKeys.all, 'detail', id] as const,
+  me: ["user", "me"] as const,
 };
- 
+
+export const getMe = async (): Promise<ApiResponse<IUser>> => {
+  const res = await axiosInstance.get<ApiResponse<IUser>>('/auth/me')
+  return res.data
+}
 
 export const useMe = () => {
-  return useQuery<ApiResponse<User>, AxiosError<ErrorResponse>>({
-    queryKey: userQueryKeys.me(),
-    queryFn: async () => {
-      const { data } = await axiosInstance.get('/auth/me', {
-        withCredentials: true,
-      });
-      return data;
-    },
-    staleTime: 5 * 60 * 1000, // 5 minutes
-    gcTime: 10 * 60 * 1000, // 10 minutes (formerly cacheTime)
-    refetchOnWindowFocus: true,
-    refetchOnReconnect: true,
-    refetchOnMount: true,
-    retry: (failureCount, error) => {
-      // Don't retry on auth errors
-      if (error.response?.status === 401 || error.response?.status === 403) {
-        return false;
-      }
-      return failureCount < 3;
-    },
-  });
-};
+  const { data, isFetching, isLoading, refetch } = useQuery<
+    ApiResponse<IUser>,
+    AxiosError<ErrorResponse>
+  >({
+    queryKey: userQueryKeys.me,
+    queryFn: getMe,
+    retry: false,
+    staleTime: 5 * 60 * 1000,
+  })
 
+  return { data, isFetching, isLoading, refetch }
+}
+
+
+// Log out function
+
+export const logoutUser = async () => {
+  const res = await axiosInstance.post("/auth/logout", {}, {
+    withCredentials: true,
+  })
+
+  return res.data
+}
 
 
 export const useLogout = () => {
-  const queryClient = useQueryClient();
- 
-  return useMutation<ApiResponse<null>, AxiosError<ErrorResponse>>({
-    mutationFn: async () => {
-      const { data } = await axiosInstance.post(
-        '/auth/logout',
-        {},
-        { withCredentials: true }
-      );
-      return data;
+  const router = useRouter()
+const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: logoutUser,
+    onSuccess: (data) => {
+      if (data.success) {
+        toast.success(data.message)
+      }
+      setTimeout(() => {
+        router.push("/")
+      }, 800)
+
+       queryClient.clear();
+
+      // OR better: only remove auth data
+      queryClient.removeQueries({ queryKey: ["user"] });
+
+      router.push("/");
     },
-    onSuccess: () => {
-      // Clear all user-related caches
-      queryClient.removeQueries({ queryKey: userQueryKeys.all });
+    onError: (err) => {
+      console.error('Logout failed', err);
+      toast.error("Logout failed")
     },
-    onError: (error) => {
-      console.error('Logout failed:', error.response?.data?.message);
-    },
-  });
-};
+  })
+}

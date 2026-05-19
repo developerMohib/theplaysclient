@@ -1,10 +1,10 @@
-import Gamepage from '@/src/publicPages/game/Gamepage';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <Gamepage />
+            <h1>Profile</h1>
+            <p>This is admin or user conditional profile page.</p>
         </div>
     );
 };

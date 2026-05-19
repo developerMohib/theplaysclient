@@ -1,10 +1,9 @@
-import Gamepage from '@/src/publicPages/game/Gamepage';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <Gamepage />
+            <h1>All Users admin</h1>
         </div>
     );
 };

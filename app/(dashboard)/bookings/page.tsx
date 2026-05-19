@@ -1,10 +1,10 @@
-import Gamepage from '@/src/publicPages/game/Gamepage';
 import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <Gamepage />
+            <h1>user booking page</h1>
+            <p>This is the user booking page.</p>
         </div>
     );
 };
