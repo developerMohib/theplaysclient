@@ -1,9 +1,10 @@
-import CallToAction from '@/components/common/CallToAction';
+import React from 'react';
 
 const page = () => {
     return (
         <div>
-            <CallToAction />
+            <h1>Contact Us</h1>
+            <p>Get in touch with us!</p>
         </div>
     );
 };
