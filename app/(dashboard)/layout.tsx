@@ -6,8 +6,8 @@ import { Slide, ToastContainer } from 'react-toastify';
 
 const layoutDashboard = async ({ children }: { children: React.ReactNode }) => {
 
-const token  = ((await cookies()).get("token"))
-console.log(token)
+const token  = ((await cookies()).get("token")?.value)
+// console.log('token',token)
 if(!token){
     redirect('/signin')
 }

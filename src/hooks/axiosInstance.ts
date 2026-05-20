@@ -2,9 +2,11 @@ import axios from "axios";
 import { redirect } from "next/navigation";
 import { useEffect } from "react";
 
+// baseURL: "https://theplaysserver.vercel.app/api",
+// baseURL: "http://localhost:5000/api",
+
 export const axiosInstance = axios.create({
-  baseURL: "https://theplaysserver.vercel.app/api",
-  // baseURL: "http://localhost:5000/api",
+  baseURL: "https://theplaysserver.onrender.com/api",
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
