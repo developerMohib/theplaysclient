@@ -5,12 +5,13 @@ import { redirect } from 'next/navigation';
 import { Slide, ToastContainer } from 'react-toastify';
 
 const layoutDashboard = async ({ children }: { children: React.ReactNode }) => {
+    const cookieStore = await cookies();
+    const token = cookieStore.get('token')?.value;
 
-const token  = ((await cookies()).get("token"))
-console.log(token)
-if(!token){
-    redirect('/signin')
-}
+    console.log('token', token)
+    if (!token) {
+        redirect('/signin')
+    }
     return (
         <PublicLayout>
             {children}

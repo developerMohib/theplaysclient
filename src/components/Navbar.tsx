@@ -106,7 +106,7 @@ function GuestActions() {
    return (
       <div className="flex items-center gap-3">
          <Link
-            href="/book-now"
+            href="/take-a-slot"
             className="group relative inline-flex items-center justify-start overflow-hidden rounded py-3 pl-4 pr-12 text-sm transition-all duration-150 ease-in-out hover:pl-10 hover:pr-6"
          >
             <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
@@ -199,10 +199,7 @@ function MobileDrawer({
                      <div className="mb-3 rounded border border-gray-800 px-3 py-3">
                         <div className="flex items-center gap-3">
                            <Image
-                              src={
-                                 user.image ||
-                                 'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61'
-                              }
+                              src={user.image?.trim()||'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61'}
                               alt={user.name}
                               width={40}
                               height={40}
@@ -278,11 +275,7 @@ function UserDropdown({
             onClick={() => setOpen(!open)}
             className="flex items-center gap-2 p-1.5"
          >
-            <Image
-               src={
-                  user.image ||
-                  'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61'
-               }
+            <Image src={user.image?.trim() ||'https://images.unsplash.com/photo-1570295999919-56ceb5ecca61'}
                alt={user.name}
                width={32}
                height={32}

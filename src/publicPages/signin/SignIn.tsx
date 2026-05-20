@@ -9,7 +9,7 @@ import { toast } from 'react-toastify'
 
 const SignIn = () => {
     const router = useRouter()
-   const searchParams = useSearchParams()
+    const searchParams = useSearchParams()
     const redirect = searchParams.get('redirect')
     const [loading, setLoading] = useState(false)
 
@@ -30,7 +30,9 @@ const SignIn = () => {
 
         try {
             setLoading(true)
-            const response = await axiosInstance.post('/auth/login', formData)
+            const response = await axiosInstance.post('/auth/login', formData, {
+                withCredentials: true,
+            })
             if (response.data.success) {
                 toast.success(response.data.message)
                 // redirect after login
