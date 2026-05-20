@@ -106,7 +106,7 @@ function GuestActions() {
    return (
       <div className="flex items-center gap-3">
          <Link
-            href="/book-now"
+            href="/take-a-slot"
             className="group relative inline-flex items-center justify-start overflow-hidden rounded py-3 pl-4 pr-12 text-sm transition-all duration-150 ease-in-out hover:pl-10 hover:pr-6"
          >
             <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
