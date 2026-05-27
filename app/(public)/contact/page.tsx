@@ -1,11 +1,8 @@
-import React from 'react';
+import ContactFormSection from '@/src/publicPages/contact/Contact';
 
 const page = () => {
     return (
-        <div>
-            <h1>Contact Us</h1>
-            <p>Get in touch with us!</p>
-        </div>
+          <ContactFormSection />
     );
 };
 

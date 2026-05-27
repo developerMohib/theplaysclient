@@ -18,13 +18,16 @@ import { IUser } from '../utilitis/all.types';
 import { useLogout, useMe } from '../hooks/useMe';
 
 import { Logo } from './Logo';
+import { usePathname } from 'next/navigation';
+import NavbarSkeleton from './NavbarSkeleton';
 
 const Navbar = () => {
-
    const [isDrawerOpen, setIsDrawerOpen] = useState(false);
    const { data, isLoading } = useMe();
    const { mutate: logout } = useLogout();
    const user = data?.data;
+   const pathname = usePathname();
+
    const handleOpenDrawer = () => {
       setIsDrawerOpen(true);
    };
@@ -37,7 +40,6 @@ const Navbar = () => {
    };
    return (
       <>
-         {/* NAVBAR */}
          <nav className="sticky top-0 z-30 w-full text-white shadow">
             <div className="container mx-auto flex h-16 items-center justify-between backdrop-blur-lg">
                <Logo />
@@ -48,7 +50,7 @@ const Navbar = () => {
                      <Link
                         key={item.href}
                         href={item.href}
-                        className="text-sm transition-colors hover:text-gray-300"
+                        className={`${pathname === item.href ? 'border-b border-red-500' : ' '} text-sm pb-1 hover:text-gray-300 hover:border-b hover:border-red-500`}
                      >
                         {item.label}
                      </Link>
@@ -58,9 +60,7 @@ const Navbar = () => {
                {/* DESKTOP RIGHT */}
                <div className="hidden items-center gap-4 md:flex">
                   {isLoading ? (
-                     <p className="text-sm text-gray-400">
-                        Loading...
-                     </p>
+                     <NavbarSkeleton />
                   ) : user ? (
                      <UserDropdown
                         user={user}
@@ -192,7 +192,7 @@ function MobileDrawer({
             <div className="space-y-2 pt-4">
                {isLoading ? (
                   <p className="px-3 py-2.5 text-sm text-gray-400">
-                     Loading...
+                     Loading...nav user
                   </p>
                ) : user ? (
                   <>

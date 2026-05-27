@@ -9,7 +9,7 @@ const Pricing = () => {
             id="pricing"
             className="py-20 px-4"
         >
-            <div className="max-w-6xl mx-auto">
+            <div>
                 {/* Heading */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -50,11 +50,11 @@ const Pricing = () => {
                             <div className="mb-6">
                                 <div className="flex items-end gap-2">
                                     <span className="text-4xl font-bold text-cyan-400">
-                                        ${pkg.price}
+                                        ৳ {pkg.price}
                                     </span>
 
                                     <span className="text-gray-500 line-through">
-                                        ${pkg.originalPrice}
+                                        ৳ {pkg.originalPrice}
                                     </span>
                                 </div>
 

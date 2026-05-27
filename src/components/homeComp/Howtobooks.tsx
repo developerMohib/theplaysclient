@@ -6,7 +6,7 @@ import { steps } from '@/src/utilitis/data';
 const Howtobooks = () => {
     return (
         <section id="how-it-works" className="py-20 px-4">
-  <div className="max-w-6xl mx-auto">
+  <div>
 
     {/* Header */}
     <div className="text-center mb-12">
