@@ -52,7 +52,7 @@ export const useLogout = () => {
         toast.success(data.message)
       }
       queryClient.clear();
-      queryClient.removeQueries({ queryKey: ["user"] });
+      queryClient.removeQueries({ queryKey: ["logger"] });
       router.push("/");
     },
     onError: (err) => {

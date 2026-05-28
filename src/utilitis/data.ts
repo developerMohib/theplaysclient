@@ -14,7 +14,7 @@ import { NavItem } from "./all.types";
 export const publicNavItems: NavItem[] = [
   { label: "Home", href: "/" },
   { label: "Games", href: "/games" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Packages", href: "/packages" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
@@ -31,8 +31,6 @@ export const adminPrivateNavItems: NavItem[] = [
   { label: "All Bookings", href: "/bookings" },
   { label: "Profile", href: "/profile" },
 ];
-
-
 
 export const steps = [
   {
@@ -133,8 +131,8 @@ export const packages = [
   {
     name: "Starter Ride",
     duration: "1 Hour",
-    price: 1500,
-    originalPrice: 2000,
+    price: 100,
+    originalPrice: 150,
     features: [
       "Access to 3D Simulator",
       "Professional Steering Wheel",
@@ -146,9 +144,9 @@ export const packages = [
   },
   {
     name: "Street Racer",
-    duration: "2 Hours",
-    price: 2800,
-    originalPrice: 4000,
+    duration: "1 Hour",
+    price: 100,
+    originalPrice: 150,
     features: [
       "Everything in Starter",
       "Multiplayer Racing",
@@ -161,18 +159,60 @@ export const packages = [
   },
   {
     name: "Pro Driver",
-    duration: "4 Hours",
-    price: 5000,
-    originalPrice: 8000,
+    duration: "1 Hour",
+    price: 100,
+    originalPrice: 150,
     features: [
       "Everything in Street Racer",
       "Priority Booking",
       "Leaderboard Access",
-      "Coach Session (30 min)",
+      "Coach Session (10 min)",
       "Exclusive Events",
       "VIP Lounge Access",
       "Premium Merchandise",
     ],
     popular: false,
+  },
+];
+
+// import { NextRequest, NextResponse } from 'next/server';
+
+// export function middleware(request: NextRequest) {
+//   const token = request.cookies.get('token')?.value;
+
+//   if (request.nextUrl.pathname.startsWith('/dashboard') && !token) {
+//     return NextResponse.redirect(new URL('/signin', request.url));
+//   }
+
+//   return NextResponse.next();
+// }
+
+// export const config = {
+//   matcher: ['/dashboard/:path*', '/admin/:path*'], // Protected routes
+// };
+
+// middleware.ts
+
+export const memberships = [
+  {
+    name: "Silver Membership",
+    price: 1999,
+    duration: 20,
+    benefits: [
+      "10% Discount on Packages",
+      "Priority Booking",
+      "Monthly Free Session",
+    ],
+  },
+  {
+    name: "Gold Membership",
+    price: 1799,
+    duration: 30,
+    benefits: [
+      "20% Discount on Packages",
+      "VIP Lounge Access",
+      "Exclusive Tournaments",
+      "Free Merchandise",
+    ],
   },
 ];

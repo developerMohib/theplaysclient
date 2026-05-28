@@ -1,8 +1,8 @@
 "use client";
 
 import React from 'react';
-import { useRouter } from 'next/navigation';
-import { useEffect } from 'react';
+// import { useRouter } from 'next/navigation';
+// import { useEffect } from 'react';
 
 import { useMe } from '../hooks/useMe';
 
@@ -14,19 +14,19 @@ const PublicLayout = ({
 }: {
    children: React.ReactNode;
 }) => {
-   const router = useRouter();
+   // const router = useRouter();
 
    const { data, isLoading } = useMe();
 
    // wait until request finishes
-   useEffect(() => {
-      if (!isLoading && !data?.success) {
-         router.push('/signin');
-      }
-   }, [data, isLoading, router]);
+   // useEffect(() => {
+   //    if (!isLoading && !data?.success) {
+   //       router.push('/signin');
+   //    }
+   // }, [data, isLoading, router]);
 
    if (isLoading) {
-      return <p>Loading...</p>;
+      return <p>Loading...public layout</p>;
    }
 
    // prevent layout flicker

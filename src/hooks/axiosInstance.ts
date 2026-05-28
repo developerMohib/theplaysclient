@@ -1,12 +1,12 @@
 import axios from "axios";
-import { redirect } from "next/navigation";
-import { useEffect } from "react";
+// import { redirect } from "next/navigation";
+// import { useEffect } from "react";
 
-// baseURL: "https://theplaysserver.vercel.app/api",
-// baseURL: "http://localhost:5000/api",
+const URL= "https://theplaysserver.vercel.app/api";
+// const URL= "http://localhost:5000/api";
 
 export const axiosInstance = axios.create({
-  baseURL: "https://theplaysserver.onrender.com/api",
+  baseURL: URL,
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
@@ -17,21 +17,21 @@ axiosInstance.interceptors.request.use((config) => {
 });
 
 // Response interceptor
-axiosInstance.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    if (error.response?.status === 401) {
-      useEffect(() => {
-        if (error?.auth) {
-          redirect("/signin");
-        }
-      }, [error]);
-      // safer than window in Next.js
-      if (typeof window !== "undefined") {
-        window.location.replace("/signin");
-      }
-    }
+// axiosInstance.interceptors.response.use(
+//   (response) => response,
+//   (error) => {
+//     if (error.response?.status === 401) {
+//       useEffect(() => {
+//         if (error?.auth) {
+//           redirect("/signin");
+//         }
+//       }, [error]);
+//       // safer than window in Next.js
+//       if (typeof window !== "undefined") {
+//         window.location.replace("/signin");
+//       }
+//     }
 
-    return Promise.reject(error);
-  },
-);
+//     return Promise.reject(error);
+//   },
+// );
