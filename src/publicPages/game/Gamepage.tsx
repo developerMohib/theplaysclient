@@ -2,17 +2,14 @@
 
 import Image from "next/image";
 import useGames from "@/src/hooks/useGames";
+import GameSkeleton from "./GameSkeleton";
 
 const Gamepage = () => {
   const { isPending, error, data, refetch } = useGames();
 
   if (isPending) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <p className="text-lg font-medium animate-pulse">
-          Loading games...
-        </p>
-      </div>
+      <GameSkeleton />
     );
   }
 
@@ -36,7 +33,7 @@ const Gamepage = () => {
   const games = data?.data || [];
 
   return (
-    <section className="text-white px-6 py-10">
+    <section className="text-white px-6 py-20">
       {/* Header */}
       <div className="max-w-7xl mx-auto mb-10">
         <h1 className="text-4xl md:text-5xl font-bold">

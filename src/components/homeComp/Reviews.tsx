@@ -19,7 +19,7 @@ const Reviews = () => {
             id="reviews"
             className="py-20 px-4"
         >
-            <div className="max-w-6xl mx-auto">
+            <div>
                 {/* Heading */}
                 <div className="text-center mb-16">
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">

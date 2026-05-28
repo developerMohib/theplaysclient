@@ -24,7 +24,7 @@ const HeroBanner = () => {
             <div className="absolute inset-0 bg-black/70" />
 
             {/* Content */}
-            <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-center px-4 text-center">
+            <div className="relative z-10 mx-auto flex flex-col items-center justify-center px-4 text-center py-28">
                 <span className="mb-5 rounded-full border border-cyan-400/30 bg-white/10 px-4 py-2 text-sm font-medium text-cyan-300 backdrop-blur">
                     🏁 Premium Driving Experience
                 </span>

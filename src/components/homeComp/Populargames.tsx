@@ -4,17 +4,14 @@ import Image from 'next/image';
 import Link from 'next/link';
 import LinkButton from '../LinkButton';
 import useGames from '@/src/hooks/useGames';
+import GameSkeleton from '@/src/publicPages/game/GameSkeleton';
 
 const Populargames = () => {
     const { isPending, error, data, refetch } = useGames();
 
     if (isPending) {
         return (
-            <div className="min-h-screen flex items-center justify-center">
-                <p className="text-lg font-medium animate-pulse">
-                    Loading games...
-                </p>
-            </div>
+           <GameSkeleton />
         );
     }
 
