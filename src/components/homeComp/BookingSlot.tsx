@@ -83,12 +83,12 @@ export default function BookingSlot() {
             return
         }
         if (!date || !game || !slot) return
-        console.log({
-            date,
-            game,
-            slot,
-            paymentMethod,
-        })
+        // console.log({
+        //     date,
+        //     game,
+        //     slot,
+        //     paymentMethod,
+        // })
 
         setDone(true)
 

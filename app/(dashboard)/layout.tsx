@@ -1,14 +1,14 @@
 import React from 'react';
 import PublicLayout from '@/src/components/PublicLayout';
 import { cookies } from 'next/headers';
-import { redirect } from 'next/navigation';
+// import { redirect } from 'next/navigation';
 import { Slide, ToastContainer } from 'react-toastify';
 
 const layoutDashboard = async ({ children }: { children: React.ReactNode }) => {
     const cookieStore = await cookies();
     const token = cookieStore?.get('token')?.value;
 
-    console.log('token', token)
+    // console.log('token', token)
     // if (!token) {
     //     redirect('/signin')
     // }

@@ -8,7 +8,6 @@ import GameSkeleton from '@/src/publicPages/game/GameSkeleton';
 
 const Populargames = () => {
     const { isPending, error, data, refetch } = useGames();
-console.log(data);
     if (isPending) {
         return (
            <GameSkeleton />
