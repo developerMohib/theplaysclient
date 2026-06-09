@@ -66,7 +66,7 @@ const HeroBanner = () => {
                             key={i}
                             className="rounded-2xl border border-white/10 bg-white/10 p-6 backdrop-blur"
                         >
-                            <h3 className="text-3xl font-bold text-cyan-400">
+                            <h3 className="text-3xl font-bold text-red-500">
                                 {stat.number}
                             </h3>
 

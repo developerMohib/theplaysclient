@@ -2,9 +2,8 @@
 
 import { useState } from 'react'
 import { CheckCircle, ChevronLeft, ChevronRight } from 'lucide-react'
-import { usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import { useMe } from '@/src/hooks/useMe';
-import { useOneGame } from '@/src/hooks/useGames';
 
 type Game = { id: string; name: string }
 type TimeSlot = { id: number; label: string; hour: number }
@@ -31,7 +30,7 @@ const getToday = () => {
 }
 
 export default function BookingSlot() {
-    const { data ,isLoading} = useMe();
+    const { data, isLoading } = useMe();
     const [game, setGame] = useState<Game | null>(null)
     const [slot, setSlot] = useState<TimeSlot | null>(null)
     const [month, setMonth] = useState(new Date())
@@ -84,12 +83,12 @@ export default function BookingSlot() {
             return
         }
         if (!date || !game || !slot) return
-        console.log({
-            date,
-            game,
-            slot,
-            paymentMethod,
-        })
+        // console.log({
+        //     date,
+        //     game,
+        //     slot,
+        //     paymentMethod,
+        // })
 
         setDone(true)
 
@@ -102,12 +101,15 @@ export default function BookingSlot() {
     }
 
     return (
-        <div className="min-h-screen px-4 py-10">
+        <div className="px-4 py-10">
 
             {/* TITLE */}
-            <h1 className="text-center text-4xl font-bold mb-8">
-                Book Gaming Slot
-            </h1>
+            <h2 className="text-4xl md:text-6xl font-black text-white text-center mb-10">
+                Book {" "}
+                <span className="bg-linear-to-r from-white to-red-600 bg-clip-text text-transparent">
+                    Gaming Slot
+                </span>
+            </h2>
 
             <div className="grid lg:grid-cols-4 gap-6">
 

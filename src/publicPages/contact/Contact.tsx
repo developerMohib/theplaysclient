@@ -40,12 +40,7 @@ export default function ContactFormSection() {
 
     try {
       setLoading(true)
-
-      // 👉 later replace with API call
-      console.log('Booking Data:', formData)
-
       await new Promise((res) => setTimeout(res, 1000))
-
       toast.success('Booking request sent successfully! 🎮')
 
       setFormData({

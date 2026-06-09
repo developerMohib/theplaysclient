@@ -3,6 +3,7 @@
 import Image from "next/image";
 import useGames from "@/src/hooks/useGames";
 import GameSkeleton from "./GameSkeleton";
+import Link from "next/link";
 
 const Gamepage = () => {
   const { isPending, error, data, refetch } = useGames();
@@ -62,12 +63,14 @@ const Gamepage = () => {
             >
               {/* Image */}
               <div className="relative h-60 overflow-hidden">
-                <Image
-                  src={game.image}
-                  alt={game.name}
-                  fill
-                  className="object-cover group-hover:scale-105 transition duration-500"
-                />
+                <Link href={`/game/${game.slug}`}>
+                  <Image
+                    src={game.image}
+                    alt={game.name}
+                    fill
+                    className="object-cover group-hover:scale-105 transition duration-500"
+                  />
+                </Link>
 
                 {game.featured && (
                   <span className="absolute top-4 left-4 bg-yellow-500 text-black text-xs font-bold px-3 py-1 rounded-full">
@@ -107,20 +110,16 @@ const Gamepage = () => {
                 {/* Footer */}
                 <div className="flex items-center justify-between pt-3">
                   <div>
-                    <p className="text-2xl font-bold">
-                      ${game.price}
+                    <p className="text-xl font-bold">
+                      ৳{game.price}<span className="text-xs text-gray-300">
+                        /per hour
+                      </span>
                     </p>
-
-                    {game.discount > 0 && (
-                      <p className="text-green-400 text-sm">
-                        {game.discount}% OFF
-                      </p>
-                    )}
                   </div>
 
-                  <button className="px-4 py-2 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition">
+                  <Link href={`/game/${game.slug}`} className="px-4 py-2 rounded-lg bg-white text-black font-medium hover:bg-gray-200 transition">
                     View Game
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>

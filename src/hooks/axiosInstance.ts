@@ -2,7 +2,8 @@ import axios from "axios";
 // import { redirect } from "next/navigation";
 // import { useEffect } from "react";
 
-const URL= "https://theplaysserver.vercel.app/api";
+const URL= "https://theplaysserver.onrender.com/api";
+// const URL= "https://theplaysserver.vercel.app/api";
 // const URL= "http://localhost:5000/api";
 
 export const axiosInstance = axios.create({
