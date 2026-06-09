@@ -41,7 +41,7 @@ const Navbar = () => {
    return (
       <>
          <nav className="sticky top-0 z-30 w-full text-white shadow">
-            <div className="container mx-auto flex h-16 items-center justify-between backdrop-blur-lg">
+            <div className="container mx-auto flex h-16 items-center justify-between backdrop-blur-lg px-2">
                <Logo />
 
                {/* DESKTOP NAV */}

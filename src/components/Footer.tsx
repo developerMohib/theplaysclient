@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { Logo } from "./Logo";
-import {  Mail, Phone, MapPin } from 'lucide-react'
+import { Mail, Phone, MapPin } from 'lucide-react'
 
 const Footer = () => {
     return (
@@ -25,7 +25,7 @@ const Footer = () => {
                         <ul className="space-y-2">
                             {['Home', 'About', 'Pricing', 'Contact'].map((link) => (
                                 <li key={link}>
-                                    <Link href={link === 'Home' ? '/' : `/${link.toLowerCase()}`} className="text-slate-200 hover:text-cyan-400 hover:pl-1.5 transition-transform duration-300 text-sm">
+                                    <Link href={link === 'Home' ? '/' : `/${link.toLowerCase()}`} className="text-slate-200 pl-0 hover:text-red-500 hover:pl-1.5 transition-all duration-300 ease-in-out text-sm">
                                         {link}
                                     </Link>
                                 </li>
@@ -39,7 +39,10 @@ const Footer = () => {
                         <ul className="space-y-2">
                             {['FAQ', 'Privacy Policy', 'Terms of Service', 'Contact Us'].map((link) => (
                                 <li key={link}>
-                                    <a href="#" className="text-slate-200 hover:text-cyan-400 hover:pl-1.5 transition-transform duration-300 text-sm">
+                                    <a
+                                        href="#"
+                                        className="text-slate-200 pl-0 hover:text-red-500 hover:pl-1.5 transition-all duration-300 ease-in-out text-sm"
+                                    >
                                         {link}
                                     </a>
                                 </li>
@@ -53,15 +56,19 @@ const Footer = () => {
                         <ul className="space-y-3">
                             <li className="flex items-center gap-2 text-slate-200 text-sm">
                                 <Phone size={16} className="text-cyan-400" />
-                                +880 1234 567890
+                                <a href="tel:+8801731093494" className="hover:underline">
+                                    +8801731093494
+                                </a>
                             </li>
                             <li className="flex items-center gap-2 text-slate-200 text-sm">
                                 <Mail size={16} className="text-cyan-400" />
-                                info@theplays.com
+                                <a href="mailto:info@theplays.com" className="hover:underline">
+                                    info@theplays.com
+                                </a>
                             </li>
                             <li className="flex items-center gap-2 text-slate-200 text-sm">
                                 <MapPin size={16} className="text-cyan-400" />
-                                Dhaka, Bangladesh
+                                Sunamganj, Bangladesh
                             </li>
                         </ul>
                     </div>
@@ -91,6 +98,7 @@ const Footer = () => {
                     {/* Copyright */}
                     <div className="text-center text-slate-200 text-sm">
                         <p>&copy; 2024 The Plays. All rights reserved. | Built with ❤️ for driving enthusiasts</p>
+                        <p> <span className="text-xs" >developed by <Link target="_blank" href="https://mohibullahmohim.com/" className="hover:text-red-500 underline">Mohibullah Mohim</Link> </span></p>
                     </div>
                 </div>
             </div>

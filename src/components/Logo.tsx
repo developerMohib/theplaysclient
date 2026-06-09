@@ -9,14 +9,10 @@ export function Logo() {
                     width={40}
                     height={40}
                     className="h-9 w-auto"
-                    src="/logo-the-plays.png"
+                    src="/theplaysbd.PNG"
                     alt="The Plays Logo"
                 />
             </div>
-
-            <span className="hidden bg-linear-to-r from-red-500 via-orange-400 to-pink-400 bg-clip-text text-xl font-bold text-transparent sm:inline">
-                The Plays
-            </span>
         </Link>
     )
 }

@@ -14,7 +14,7 @@ const LinkButton = ({
     return (
         <Link
             href={href}
-            className={`${className} group relative inline-flex items-center justify-start overflow-hidden rounded border border-white/20 bg-red-600 px-6 py-3 pl-4 pr-12 text-lg font-semibold text-white backdrop-blur transition-all duration-150 ease-in-out hover:bg-white/20 hover:pl-10 hover:pr-6`}
+            className={`group relative inline-flex items-center justify-start overflow-hidden rounded border border-white/20 bg-red-600 px-6 py-2 pl-4 pr-12 text-white backdrop-blur transition-all duration-150 ease-in-out hover:bg-white/20 hover:pl-10 hover:pr-6 ${className}`}
         >
             {/* Right Arrow */}
             <span className="absolute right-0 pr-4 duration-200 ease-out group-hover:translate-x-12">
