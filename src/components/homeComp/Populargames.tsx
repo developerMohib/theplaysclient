@@ -8,7 +8,7 @@ import GameSkeleton from '@/src/publicPages/game/GameSkeleton';
 
 const Populargames = () => {
     const { isPending, error, data, refetch } = useGames();
-
+console.log(data);
     if (isPending) {
         return (
            <GameSkeleton />
@@ -47,13 +47,13 @@ const Populargames = () => {
                     </span>
 
                     <h2 className="text-4xl md:text-6xl font-black text-white mb-5">
-                        Choose Your{" "}
-                        <span className="bg-linear-to-r from-cyan-400 to-purple-500 bg-clip-text text-transparent">
-                            Favorite Game
+                        Choose{" "}
+                        <span className="bg-linear-to-r from-white to-red-600 bg-clip-text text-transparent">
+                           Your Favorite Game
                         </span>
                     </h2>
 
-                    <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+                    <p className="text-gray-300 max-w-2xl mx-auto text-lg">
                         Experience next-generation gaming with ultra graphics,
                         realistic controls, and immersive gameplay.
                     </p>
@@ -67,7 +67,7 @@ const Populargames = () => {
                             className="group relative rounded-3xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl hover:border-cyan-400/40 transition-all duration-500 hover:-translate-y-2"
                         >
                             {/* Image */}
-                            <Link href={`/games/${game.slug}`} className="relative block h-80">
+                            <Link href={`/game/${game.slug}`} className="relative block h-80">
                                 <div className="relative h-105 overflow-hidden">
                                     <Image
                                         src={game.image}
@@ -89,17 +89,17 @@ const Populargames = () => {
                             </Link>
 
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 right-0 p-6">
-                                <h3 className="text-3xl font-black text-white mb-3">
+                            <div className="absolute bottom-0 left-0 right-0 px-6">
+                                <h3 className="text-3xl font-black text-white mb-1.5">
                                     {game.name}
                                 </h3>
 
-                                <div className="flex items-center justify-between">
+                                <div className="flex items-center justify-between mb-3">
                                     <span className="text-gray-300 text-sm bg-white/5 rounded p-1">
-                                        Available Now
+                                      {game.available ? 'Available Now' : 'Coming Soon'}
                                     </span>
 
-                                    <LinkButton href={`/book-now?game=${game._id}`} text="Book Now" className='rounded-xl bg-white/5 text-white font-sm' />
+                                    <LinkButton href={`/book-now?game=${game._id}`} text="Book Now" className='rounded-xl bg-white/5 text-white font-xs' />
                                 </div>
                             </div>
 
