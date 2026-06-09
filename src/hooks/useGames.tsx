@@ -39,16 +39,35 @@ const useGames = () => {
 export default useGames;
 
 
-const getOneGame = async (id: string): Promise<IGame> => {
-    const res = await axiosInstance.get(`/game/my/${id}`
+
+const getOneGame = async (slug: string): Promise<IGame> => {
+    const res = await axiosInstance.get(`/game/my/${slug}`)
+    return res.data.data
+}
+export const useOneGame = (slug: string) => {
+    return useQuery({
+        queryKey: ['onegame', slug],
+
+        queryFn: () => getOneGame(slug),
+
+        enabled: !!slug,
+
+        staleTime: 1000 * 60 * 5,
+    })
+}
+
+
+
+const bookOneGame = async (id: string): Promise<IGame> => {
+    const res = await axiosInstance.get(`/game/book/${id}`
     )
     return res.data.data
 }
-export const useOneGame = (id: string) => {
+export const useBookOneGame = (id: string) => {
     return useQuery({
         queryKey: ['game', id],
 
-        queryFn: () => getOneGame(id),
+        queryFn: () => bookOneGame(id),
 
         enabled: !!id,
 

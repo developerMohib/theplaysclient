@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
 import { useMe } from '@/src/hooks/useMe'
-import { useOneGame } from '@/src/hooks/useGames'
+import { useBookOneGame } from '@/src/hooks/useGames'
 
 type TimeSlot = { id: number, label: string, hour: number }
 const generateSlots = (): TimeSlot[] =>
@@ -40,7 +40,7 @@ export default function BookNow() {
         data: mygame,
         isLoading,
         error,
-    } = useOneGame(gameId)
+    } = useBookOneGame(gameId)
 
     const [slot, setSlot] = useState<TimeSlot | null>(null)
     const [date, setDate] = useState<Date | null>(getToday())
